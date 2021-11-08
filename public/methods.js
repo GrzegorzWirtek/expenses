@@ -9,10 +9,13 @@ class Methods{
     this.valueMonthAll = document.querySelector('.value-month-all');
     this.sumForDayElement = document.querySelector('.main-amount__number--for-day');
     this.moneyLeftElement = document.querySelector('.main-amount__number--whole');
+    this.dateElement = document.querySelector('.expencess__day-header');
+    this.datesElement = document.querySelector('.expencess__all-header');
   };
 
   updateDayData(data){
-    const { month, counter, moneyConstant, year } = data;
+    const { counter, moneyConstant, year, month } = data[0];
+    const { actualDay, actualMonth, actualYear } = data[1];
     let daysInLastMonth = new Date(year, month, 0).getDate();
     let daysLeft = daysInLastMonth - counter;
 
@@ -20,13 +23,23 @@ class Methods{
     this.updateDaysLeft(daysLeft);
     this.sumForDay = (moneyConstant/daysLeft).toFixed(1);
     this.updateSumForDay();
+    this.updateDate( actualDay, actualMonth, actualYear );
   };
+
+  updateDate( actualDay, actualMonth, actualYear ){
+    let monthsArrayD = ['stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','września', 'października', 'listopada', 'grudnia'];
+    let monthsArrayM = ['styczeń','luty','marzec','kwiecień','maj','czerwiec','lipiec','sierpień','wrzesień', 'październik', 'listopad', 'grudzień'];
+    console.log(actualDay, actualMonth, actualYear)
+    this.dateElement.textContent = `${actualDay} ${monthsArrayD[actualMonth - 1]} ${actualYear}`;
+    let makeUpper = [...monthsArrayM[actualMonth - 2]][0].toUpperCase() + monthsArrayM[actualMonth - 2].slice(1);
+    this.datesElement.textContent = `${makeUpper}/${monthsArrayM[actualMonth - 1]}`;
+  }
 
   updateCurrentData(data){
     const {
       money, food, fuel, alcohol, medicines, bills, clothes, entertainment,
       foodMonth, fuelMonth, alcoholMonth, medicinesMonth, billsMonth, clothesMonth, entertainmentMonth
-    } = data;
+    } = data[0];
 
     let expancesArray = [food, fuel, alcohol, medicines, bills, clothes, entertainment];
     let expancesMonthArray = [foodMonth, fuelMonth, alcoholMonth, medicinesMonth, billsMonth, clothesMonth, entertainmentMonth];
@@ -44,7 +57,7 @@ class Methods{
   };
 
   updateMoneyLeft(money){
-    this.moneyLeftElement.textContent = money;
+    this.moneyLeftElement.textContent = money + '0';
   };
 
   updateSumForDay(){

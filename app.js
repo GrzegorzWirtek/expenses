@@ -49,6 +49,7 @@ app.get('/getdata', async (req, res)=>{
   const actualYear = actualDate.getFullYear();
 
   const data = await dayModel.findOne({id: 'expences'});
+  const dateData = { actualDay, actualMonth, actualYear };
   const { counter, day, month, money } = data;
   
   const dateFromDB = new Date(`${month}/${day}/2021`);
@@ -57,10 +58,13 @@ app.get('/getdata', async (req, res)=>{
   const differenceDays = (Math.ceil(difference / (1000 * 3600 * 24))) - 1;
   
   //jeśli jest ten sam dzień, zwróć zaktualizowane dane
-  if(counter === differenceDays) return res.json(data);
-  
+  if(counter === differenceDays) return res.json([data, dateData]);
+
   //jeśli jest nowy miesiąc rozliczeniowy, aktualizuj
-  if(differenceDays > 27 && actualDay >= 25){
+  if(
+    differenceDays > 27 && actualDay >= 25 ||
+    differenceDays > 31
+    ){
     await dayModel.findOneAndUpdate(
       {
         id: 'expences'
@@ -69,7 +73,6 @@ app.get('/getdata', async (req, res)=>{
         month: actualMonth,
         counter: 1,
         moneyConstant: 2850,
-        counter: differenceDays,
         food: 0,
         fuel: 0,
         alcohol: 0,
@@ -84,7 +87,9 @@ app.get('/getdata', async (req, res)=>{
         billsMonth: 0,
         clothesMonth: 0,
         entertainmentMonth: 0
-      })
+      });
+    const data = await dayModel.findOne({id: 'expences'})
+    res.json([data, dateData]);
   }else {
     //jeśli jest nowy dzień, zaktualizuj dane
     await dayModel.findOneAndUpdate(
@@ -102,7 +107,7 @@ app.get('/getdata', async (req, res)=>{
         entertainment: 0,
       });
     const data = await dayModel.findOne({id: 'expences'})
-    res.json(data);
+    res.json([data, dateData]);
   };
 });
 
@@ -117,7 +122,7 @@ app.post('/update', async (req, res)=>{
       money: moneyMinusValue,
     });
   const data = await dayModel.findOne({id: 'expences'})
-  res.json(data);
+  res.json([data, null]);
 })
 
 // new dayModel({

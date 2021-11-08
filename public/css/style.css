@@ -7,12 +7,13 @@
 }
 
 body {
-  background-color: white;
+  background-color: #fffbec;
 }
 
 html {
   font-size: 30px;
   font-family: "Inter", sans-serif;
+  color: #0a2f4f;
 }
 
 .main {
@@ -30,6 +31,10 @@ html {
   margin-bottom: 10px;
 }
 
+.header {
+  background-color: #fffdf6;
+}
+
 .header__title {
   text-align: center;
   font-size: 1.32rem;
@@ -43,6 +48,7 @@ html {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 100%;
+  background-color: #fffdf6;
 }
 
 .main-amount__whole {
@@ -75,6 +81,7 @@ html {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+  background-color: #fffdf6;
 }
 
 .days-left__graphically {
@@ -110,7 +117,7 @@ html {
 }
 
 .days-left__circle--filled {
-  background-color: #23233f;
+  background-color: #14558d;
 }
 
 .days-left__numerically {
@@ -136,6 +143,7 @@ html {
   border: 1px solid grey;
   border-radius: 5px;
   margin-bottom: 10px;
+  background-color: #fffdf6;
 }
 
 @media (min-width: 600px) {
@@ -185,7 +193,7 @@ html {
   -ms-flex-negative: 0;
       flex-shrink: 0;
   padding: 5px;
-  background-color: rgba(146, 157, 146, 0.227);
+  background-color: #ffe5de;
 }
 
 @media (min-width: 600px) {
@@ -247,7 +255,7 @@ html {
   top: 0;
   left: 0;
   height: 100%;
-  background-color: brown;
+  background-color: #d5532c;
 }
 
 .component__amount {
@@ -308,7 +316,7 @@ html {
   font-size: 0.5rem;
   outline: none;
   border: none;
-  background-color: green;
+  background-color: #ff6e40;
   color: white;
 }
 

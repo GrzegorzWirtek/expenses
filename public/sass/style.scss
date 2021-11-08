@@ -6,10 +6,13 @@
 $main-font-family: 'Inter',
 sans-serif;
 
+$body-color: #0a2f4f;
+$section-light-color: #fffdf6;
+$section-darken-color: #ffe5de;
 $border-color: grey;
-$filled-color: rgb(35, 35, 63);
-$graph-color: brown;
-$button-color: green;
+$filled-color: #14558d;
+$graph-color: #d5532c;
+$button-color: #ff6e40;
 
 $sections-padding: 5px;
 $circle-width: 19px;
@@ -32,13 +35,14 @@ $font-size-large: 1.1rem;
 }
 
 body {
-  // background-color: rgb(59, 56, 67);
-  background-color: white;
+  background-color: darken($section-light-color, 2);
 }
 
 html {
   font-size: 30px;
   font-family: $main-font-family;
+  color: $body-color;
+  ;
 }
 
 .main {
@@ -58,6 +62,10 @@ html {
 
 //---header---
 
+.header {
+  background-color: $section-light-color;
+}
+
 .header__title {
   text-align: center;
   font-size: $font-size-large * 1.2;
@@ -69,6 +77,7 @@ html {
 .main-amount {
   @include flex-box-mixin();
   width: 100%;
+  background-color: $section-light-color;
 }
 
 .main-amount__whole {
@@ -95,6 +104,7 @@ html {
   @include flex-box-mixin();
   align-items: center;
   width: 100%;
+  background-color: $section-light-color;
 }
 
 .days-left__graphically {
@@ -144,6 +154,7 @@ html {
   border: 1px solid $border-color;
   border-radius: 5px;
   margin-bottom: 10px;
+  background-color: $section-light-color;
 
   @media(min-width: 600px) {
     border: none;
@@ -177,7 +188,7 @@ html {
   flex-basis: 100%;
   flex-shrink: 0;
   padding: 5px;
-  background-color: rgba(146, 157, 146, 0.227);
+  background-color: $section-darken-color;
 
   @media(min-width: 600px) {
     border: 1px solid $border-color;

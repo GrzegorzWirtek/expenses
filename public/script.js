@@ -121,8 +121,8 @@ class Main{
 
   updateDailyData(inputvalue, e){
     const data = {
-       sum: this.previousValue + inputvalue,
-       sumMonth: this.previousValueMonth + inputvalue,
+       sum: (this.previousValue + inputvalue).toFixed(2),
+       sumMonth: (this.previousValueMonth + inputvalue).toFixed(2),
        type: e.target.parentNode.dataset.form,
        typeMonth: e.target.parentNode.dataset.form + 'Month',
        moneyMinusValue: parseFloat(this.m.moneyLeftElement.textContent) - inputvalue

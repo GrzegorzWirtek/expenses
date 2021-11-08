@@ -115,7 +115,6 @@ class Main{
         if(!inputvalue) return
 
         this.updateDailyData(inputvalue, e);
-        console.log(e.target.parentNode.dataset.form + 'Month')
       };
     })
   };

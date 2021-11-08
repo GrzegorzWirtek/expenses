@@ -1,0 +1,325 @@
+// @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap');
+
+// $main-font-family: 'Fira Sans',
+// sans-serif; //200,300,400
+$main-font-family: 'Inter',
+sans-serif;
+
+$border-color: grey;
+$filled-color: rgb(35, 35, 63);
+$graph-color: brown;
+$button-color: green;
+
+$sections-padding: 5px;
+$circle-width: 19px;
+$circles-padding: 2px;
+
+$font-size-small: 0.5rem;
+$font-size-sm: 0.6rem;
+$font-size-medium: 0.9rem;
+$font-size-large: 1.1rem;
+
+@mixin flex-box-mixin {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  // background-color: rgb(59, 56, 67);
+  background-color: white;
+}
+
+html {
+  font-size: 30px;
+  font-family: $main-font-family;
+}
+
+.main {
+  width: 100%;
+  max-width: 700px;
+  min-width: 300px;
+  padding: 10px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.border {
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+//---header---
+
+.header__title {
+  text-align: center;
+  font-size: $font-size-large * 1.2;
+  line-height: 1.5;
+}
+
+//---main-amount---
+
+.main-amount {
+  @include flex-box-mixin();
+  width: 100%;
+}
+
+.main-amount__whole {
+  flex-basis: 50%;
+  padding: $sections-padding;
+  text-align: center;
+  font-size: $font-size-large;
+}
+
+.main-amount__for-day {
+  flex-basis: 50%;
+  padding: $sections-padding;
+  text-align: center;
+  font-size: $font-size-large;
+}
+
+.main-amount__header {
+  font-size: $font-size-small;
+}
+
+//---days left---
+
+.days-left {
+  @include flex-box-mixin();
+  align-items: center;
+  width: 100%;
+}
+
+.days-left__graphically {
+  @include flex-box-mixin();
+  justify-content: center;
+  flex-basis: 50%;
+  padding: $sections-padding;
+}
+
+.days-left__circles {
+  @include flex-box-mixin();
+  width: (($circle-width * 7) + 14 + 6) - $circles-padding;
+  padding: $circles-padding;
+}
+
+.days-left__circle {
+  width: $circle-width;
+  height: $circle-width;
+  margin: 1px;
+  border: 1px solid $border-color;
+  border-radius: 50%;
+}
+
+.days-left__circle--filled {
+  background-color: $filled-color;
+}
+
+.days-left__numerically {
+  flex-grow: 1;
+  text-align: center;
+  padding: $sections-padding;
+}
+
+.days-left__header {
+  font-size: $font-size-small;
+}
+
+.days-left__days {
+  font-size: $font-size-large;
+}
+
+//---expences---
+.expences {
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  margin-bottom: 10px;
+
+  @media(min-width: 600px) {
+    border: none;
+  }
+}
+
+.expences__wrapper {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: none;
+
+  @media(min-width: 600px) {
+    flex-wrap: wrap;
+  }
+}
+
+.expences__day {
+  flex-basis: 100%;
+  flex-shrink: 0;
+  padding: 5px;
+
+  @media(min-width: 600px) {
+    border: 1px solid $border-color;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+}
+
+.expences__all {
+  flex-basis: 100%;
+  flex-shrink: 0;
+  padding: 5px;
+  background-color: rgba(146, 157, 146, 0.227);
+
+  @media(min-width: 600px) {
+    border: 1px solid $border-color;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+}
+
+.expencess__day-header,
+.expencess__all-header {
+  font-size: $font-size-medium;
+  font-weight: 500;
+  text-align: center;
+}
+
+.component {
+  @include flex-box-mixin();
+  flex-basis: 100%;
+  justify-content: right;
+  align-items: center;
+  padding: 0 6px
+}
+
+.component__header {
+  font-size: $font-size-sm;
+  flex-basis: 26%;
+
+  @media(min-width: 800px) {
+    padding-left: 10px;
+  }
+}
+
+.component__graph {
+  position: relative;
+  flex-basis: 45%;
+  margin: 0 10px 0 5px;
+  border: 1px solid $border-color;
+  height: 10px;
+}
+
+.component__graph-inside,
+.component__graph-inside-m {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: $graph-color;
+}
+
+.component__amount {
+  @include flex-box-mixin();
+  align-items: center;
+  justify-content: right;
+  position: relative;
+  height: 35px;
+  flex-grow: 1;
+  cursor: pointer;
+  margin-left: 5px;
+  font-size: $font-size-medium;
+
+  @media(min-width: 800px) {
+    padding: 0 10px;
+  }
+}
+
+.component__form {
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+  width: 200%;
+  height: 100%;
+  visibility: hidden;
+  z-index: 1;
+}
+
+.component__input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 50%;
+  font-size: $font-size-medium;
+  outline: none;
+}
+
+.component__button {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  font-size: $font-size-small;
+  outline: none;
+  border: none;
+  background-color: $button-color;
+  color: white;
+}
+
+.line {
+  width: 100%;
+  margin: 5px auto;
+  border-bottom: 1px solid $border-color;
+}
+
+.component__header--empty {
+  flex-basis: 76%;
+}
+
+.component__amount--empty {
+  @include flex-box-mixin();
+  align-items: center;
+  position: relative;
+  height: 35px;
+  margin-left: 15px;
+  flex-grow: 1;
+}
+
+.component__value--all {
+  font-weight: 600;
+
+  @media(min-width: 800px) {
+    padding: 0 10px;
+  }
+}
+
+.component__value--sum {
+  font-size: $font-size-medium;
+
+  @media(min-width: 800px) {
+    padding: 0 10px;
+  }
+}
+
+.visible {
+  visibility: visible;
+}
+
+.hover {
+  @media(min-width: 800px) {
+    &:hover {
+      background-color: green;
+    }
+  }
+}

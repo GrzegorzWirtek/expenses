@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expences</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="main">
+
+  <header class="header border">
+    <h1 class="header__title">Wydatki</h1>
+  </header>
+   <section class="main-amount border">
+     <article class="main-amount__whole">
+       <p class="main-amount__header">Pozostało</p>
+       <p class="main-amount__number main-amount__number--whole"></p>
+     </article>
+     <article class="main-amount__for-day">
+       <p class="main-amount__header">Kwota na dzień</p>
+       <p class="main-amount__number main-amount__number--for-day"></p>
+     </article>
+   </section>
+
+   <section class="days-left border">
+     <article class="days-left__graphically">
+      <div class="days-left__circles"></div>
+     </article>
+     <article class="days-left__numerically">
+       <p class="days-left__header">Do końca</p>
+       <p class="days-left__days"></p>
+     </article>
+   </section>
+
+   <section class="expences">
+    <div class="expences__wrapper">
+      <section class="expences__day components">
+        <h2 class="expencess__day-header">1 listopada 2021</h2>
+        <div class="line"></div>
+
+        <article class="component">
+          <p class="component__header">Jedzenie</p>
+          <div class="component__graph">
+            <div class="component__graph-inside"></div>
+          </div>
+          <div class="component__amount hover" data-day="food">
+            <p class="component__value" data-day="food" data-dv="food"></p>
+            <form class="component__form not-move" data-form="food">
+              <input type="number" class="component__input not-move">
+              <button type='submit' class="component__button not-move">Dodaj</button>
+            </form>
+          </div>
+        </article>
+
+        <article class="component">
+          <p class="component__header">Paliwo</p>
+          <div class="component__graph">
+            <div class="component__graph-inside"></div>
+          </div>
+          <div class="component__amount hover" data-day="fuel">
+            <p class="component__value" data-day="fuel" data-dv="fuel"></p>
+            <form class="component__form not-move" data-form="fuel">
+              <input type="number" class="component__input not-move">
+              <button class="component__button not-move">Dodaj</button>
+            </form>
+          </div>
+        </article>
+
+        <article class="component">
+          <p class="component__header">Alkohol</p>
+          <div class="component__graph">
+            <div class="component__graph-inside"></div>
+          </div>
+          <div class="component__amount hover" data-day="alcohol">
+            <p class="component__value" data-day="alcohol" data-dv="alcohol"></p>
+            <form class="component__form not-move" data-form="alcohol">
+              <input type="number" class="component__input not-move">
+              <button class="component__button not-move">Dodaj</button>
+            </form>
+          </div>
+        </article>
+
+        <article class="component">
+          <p class="component__header">Leki</p>
+          <div class="component__graph">
+            <div class="component__graph-inside"></div>
+          </div>
+          <div class="component__amount hover" data-day="medicines">
+            <p class="component__value" data-day="medicines" data-dv="medicines"></p>
+            <form class="component__form not-move" data-form="medicines">
+              <input type="number" class="component__input not-move">
+              <button class="component__button not-move">Dodaj</button>
+            </form>
+          </div>
+        </article>
+        
+        <article class="component">
+          <p class="component__header">Rachunki</p>
+          <div class="component__graph">
+            <div class="component__graph-inside"></div>
+          </div>
+          <div class="component__amount hover" data-day="bills">
+            <p class="component__value" data-day="bills" data-dv="bills"></p>
+            <form class="component__form not-move" data-form="bills">
+              <input type="number" class="component__input not-move">
+              <button class="component__button not-move">Dodaj</button>
+            </form>
+          </div>
+        </article>
+
+        <article class="component">
+          <p class="component__header">Ubrania</p>
+          <div class="component__graph">
+            <div class="component__graph-inside"></div>
+          </div>
+          <div class="component__amount hover" data-day="clothes">
+            <p class="component__value" data-day="clothes" data-dv="clothes"></p>
+            <form class="component__form not-move" data-form="clothes">
+              <input type="number" class="component__input not-move">
+              <button class="component__button not-move">Dodaj</button>
+            </form>
+          </div>
+        </article>
+
+        <article class="component">
+          <p class="component__header">Rozrywka</p>
+          <div class="component__graph">
+            <div class="component__graph-inside"></div>
+          </div>
+          <div class="component__amount hover" data-day="entertainment">
+            <p class="component__value" data-day="entertainment" data-dv="entertainment"></p>
+            <form class="component__form not-move" data-form="entertainment">
+              <input type="number" class="component__input not-move">
+              <button class="component__button not-move">Dodaj</button>
+            </form>
+          </div>
+        </article>
+
+        <div class="line"></div>
+        <article class="component">
+          <p class="component__value--all value-day-all"></p>
+        </article>
+        <article class="component">
+          <p class="component__value--sum value-day-sum"></p>
+        </article>
+      </section>
+
+      <section class="expences__all components">
+        <h2 class="expencess__all-header">Październik/listopad</h2>
+        <div class="line"></div>
+
+        <article class="component">
+          <p class="component__header">Jedzenie</p>
+          <div class="component__graph">
+            <div class="component__graph-inside-m"></div>
+          </div>
+          <div class="component__amount">
+            <p class="component__value" data-month="food"></p>
+          </div>
+        </article>
+
+        <article class="component">
+          <p class="component__header">Paliwo</p>
+          <div class="component__graph">
+            <div class="component__graph-inside-m"></div>
+          </div>
+          <div class="component__amount">
+            <p class="component__value" data-month="fuel"></p>
+          </div>
+        </article>
+
+        <article class="component">
+          <p class="component__header">Alkohol</p>
+          <div class="component__graph">
+            <div class="component__graph-inside-m"></div>
+          </div>
+          <div class="component__amount">
+            <p class="component__value" data-month="alcohol"></p>
+          </div>
+        </article>
+
+        <article class="component">
+          <p class="component__header">Leki</p>
+          <div class="component__graph">
+            <div class="component__graph-inside-m"></div>
+          </div>
+          <div class="component__amount">
+            <p class="component__value" data-month="medicines"></p>
+          </div>
+        </article>
+
+        <article class="component">
+          <p class="component__header">Rachunki</p>
+          <div class="component__graph">
+            <div class="component__graph-inside-m"></div>
+          </div>
+          <div class="component__amount">
+            <p class="component__value" data-month="bills"></p>
+          </div>
+        </article>
+
+        <article class="component">
+          <p class="component__header">Ubrania</p>
+          <div class="component__graph">
+            <div class="component__graph-inside-m"></div>
+          </div>
+          <div class="component__amount">
+            <p class="component__value" data-month="clothes"></p>
+          </div>
+        </article>
+
+        <article class="component">
+          <p class="component__header">Rozrywka</p>
+          <div class="component__graph">
+            <div class="component__graph-inside-m"></div>
+          </div>
+          <div class="component__amount">
+            <p class="component__value" data-month="entertainment"></p>
+          </div>
+        </article>
+        
+        <div class="line"></div>
+        <article class="component">
+          <p class="component__value--all value-month-all"></p>
+        </article>
+      </section>
+    </div>
+   </section>
+
+  </main>
+  <script src="script.js" type="module"></script>
+</body>
+</html>

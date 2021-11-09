@@ -36,13 +36,13 @@ class Methods{
 
   updateCurrentData(data){
     const {
-      money, food, fuel, alcohol, medicines, bills, clothes, entertainment,
-      foodMonth, fuelMonth, alcoholMonth, medicinesMonth, billsMonth, clothesMonth, entertainmentMonth
+      money, food, fuel, alcohol, medicines, bills, clothes, entertainment, chemicals, 
+      foodMonth, fuelMonth, alcoholMonth, medicinesMonth, billsMonth, clothesMonth, entertainmentMonth, chemicalsMonth
     } = data[0];
 
-    let expancesArray = [food, fuel, alcohol, medicines, bills, clothes, entertainment];
-    let expancesMonthArray = [foodMonth, fuelMonth, alcoholMonth, medicinesMonth, billsMonth, clothesMonth, entertainmentMonth];
-    let expancesNamesArray = ['food', 'fuel', 'alcohol', 'medicines', 'bills', 'clothes', 'entertainment'];
+    let expancesArray = [bills, fuel, food, alcohol, medicines, chemicals, clothes, entertainment];
+    let expancesMonthArray = [billsMonth, fuelMonth, foodMonth, alcoholMonth, medicinesMonth, chemicalsMonth, clothesMonth, entertainmentMonth];
+    let expancesNamesArray = ['bills', 'fuel', 'food', 'alcohol', 'medicines','chemicals', 'clothes', 'entertainment'];
     let daySum = expancesArray.reduce((acc, item)=>{
       return acc + item;
     },0);
@@ -56,7 +56,7 @@ class Methods{
   };
 
   updateMoneyLeft(money){
-    this.moneyLeftElement.textContent = money + '0';
+    this.moneyLeftElement.textContent = money;
   };
 
   updateSumForDay(){
@@ -75,6 +75,7 @@ class Methods{
     expancesNamesArray.forEach((expancesName, index) =>{
       document.querySelector(`[data-month="${expancesName}"]`).textContent = expancesMonthArray[index];
       let percents = ((expancesMonthArray[index] / monthSum) * 100).toFixed();
+      percents = isNaN(percents) ? 0 : percents;
       this.graphsMonth[index].style.width = `${percents}%`;
    });
    this.valueMonthAll.textContent = monthSum.toFixed(2);

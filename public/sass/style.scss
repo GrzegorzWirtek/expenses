@@ -6,13 +6,23 @@
 $main-font-family: 'Inter',
 sans-serif;
 
-$body-color: #0a2f4f;
+$font-color: #0a2f4f;
+$font-color-opacity: #0a2f4fe5;
 $section-light-color: #fffdf6;
 $section-darken-color: #ffe5de;
 $border-color: grey;
 $filled-color: #14558d;
 $graph-color: #83361f;
 $button-color: #ff6e40;
+
+// $font-color: rgba(255, 255, 255, 0.857);
+// $font-color-opacity: rgba(255, 255, 255, 0.474);
+// $section-light-color: #122637;
+// $section-darken-color: #111622;
+// $border-color: #f5f0e167;
+// $filled-color: #ffc13b;
+// $graph-color: #ffc13b;
+// $button-color: #ff6e40;
 
 $sections-padding: 5px;
 $circle-width: 19px;
@@ -41,7 +51,7 @@ body {
 html {
   font-size: 30px;
   font-family: $main-font-family;
-  color: $body-color;
+  color: $font-color;
   ;
 }
 
@@ -70,6 +80,7 @@ html {
   text-align: center;
   font-size: $font-size-large * 1.2;
   line-height: 1.5;
+  color: $font-color-opacity;
 }
 
 //---main-amount---
@@ -96,6 +107,7 @@ html {
 
 .main-amount__header {
   font-size: $font-size-small;
+  color: $font-color-opacity;
 }
 
 //---days left---
@@ -140,6 +152,7 @@ html {
 
 .days-left__header {
   font-size: $font-size-small;
+  color: $font-color-opacity;
 }
 
 .days-left__days {
@@ -202,6 +215,7 @@ html {
   font-size: $font-size-medium;
   font-weight: 500;
   text-align: center;
+  color: $font-color-opacity;
 }
 
 .component {

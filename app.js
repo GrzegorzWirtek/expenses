@@ -53,7 +53,6 @@ app.get('/getdata', async (req, res)=>{
   const { counter, day, month, money } = data;
   
   const dateFromDB = new Date(`${month}/${day}/2021`);
- 
   const difference = actualDate.getTime() - dateFromDB.getTime();
   const differenceDays = (Math.ceil(difference / (1000 * 3600 * 24))) - 1;
   
@@ -62,50 +61,53 @@ app.get('/getdata', async (req, res)=>{
 
   //jeśli jest nowy miesiąc rozliczeniowy, aktualizuj
   if(
-    differenceDays > 27 && actualDay >= 25 ||
-    differenceDays > 31
+    differenceDays > 27 && actualDay >= 25
     ){
-    await dayModel.findOneAndUpdate(
-      {
-        id: 'expences'
-      },{
-        money: 2850,
-        month: actualMonth,
-        counter: 1,
-        moneyConstant: 2850,
-        food: 0,
-        fuel: 0,
-        alcohol: 0,
-        medicines: 0,
-        bills: 0,
-        clothes: 0,
-        entertainment: 0,
-        foodMonth: 0,
-        fuelMonth: 0,
-        alcoholMonth: 0,
-        medicinesMonth: 0,
-        billsMonth: 0,
-        clothesMonth: 0,
-        entertainmentMonth: 0
-      });
-    const data = await dayModel.findOne({id: 'expences'})
-    res.json([data, dateData]);
-  }else {
-    //jeśli jest nowy dzień, zaktualizuj dane
-    await dayModel.findOneAndUpdate(
-      {
-        id: 'expences'
-      },{
-        moneyConstant: money,
-        counter: differenceDays,
-        food: 0,
-        fuel: 0,
-        alcohol: 0,
-        medicines: 0,
-        bills: 0,
-        clothes: 0,
-        entertainment: 0,
-      });
+      const temporaryInitialDate = new Date(`${actualMonth}/7/2021`);
+      const temporaryDifference = actualDate.getTime() - temporaryInitialDate.getTime();
+      const temporaryDifferenceDays = (Math.ceil(temporaryDifference / (1000 * 3600 * 24))) - 1;
+      await dayModel.findOneAndUpdate(
+        {
+          id: 'expences'
+        },{
+          counter: temporaryDifferenceDays,
+          month: actualMonth,
+          year: actualYear,
+          money: 2850,
+          moneyConstant: 2850,
+          food: 0,
+          fuel: 0,
+          alcohol: 0,
+          medicines: 0,
+          bills: 0,
+          clothes: 0,
+          entertainment: 0,
+          foodMonth: 0,
+          fuelMonth: 0,
+          alcoholMonth: 0,
+          medicinesMonth: 0,
+          billsMonth: 0,
+          clothesMonth: 0,
+          entertainmentMonth: 0
+        });
+      const data = await dayModel.findOne({id: 'expences'})
+      res.json([data, dateData]);
+    }else {
+      //jeśli jest nowy dzień, zaktualizuj dane
+      await dayModel.findOneAndUpdate(
+        {
+          id: 'expences'
+        },{
+          counter: differenceDays,
+          moneyConstant: money,
+          food: 0,
+          fuel: 0,
+          alcohol: 0,
+          medicines: 0,
+          bills: 0,
+          clothes: 0,
+          entertainment: 0,
+        });
     const data = await dayModel.findOne({id: 'expences'})
     res.json([data, dateData]);
   };

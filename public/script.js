@@ -125,7 +125,7 @@ class Main{
        sumMonth: (this.previousValueMonth + inputvalue).toFixed(2),
        type: e.target.parentNode.dataset.form,
        typeMonth: e.target.parentNode.dataset.form + 'Month',
-       moneyMinusValue: parseFloat(this.m.moneyLeftElement.textContent) - inputvalue
+       moneyMinusValue: (parseFloat(this.m.moneyLeftElement.textContent) - inputvalue).toFixed(2)
       };
     fetch(`/update`,
       {

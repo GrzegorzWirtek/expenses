@@ -29,7 +29,6 @@ class Methods{
   updateDate( actualDay, actualMonth, actualYear ){
     let monthsArrayD = ['stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','września', 'października', 'listopada', 'grudnia'];
     let monthsArrayM = ['styczeń','luty','marzec','kwiecień','maj','czerwiec','lipiec','sierpień','wrzesień', 'październik', 'listopad', 'grudzień'];
-    console.log(actualDay, actualMonth, actualYear)
     this.dateElement.textContent = `${actualDay} ${monthsArrayD[actualMonth - 1]} ${actualYear}`;
     let makeUpper = [...monthsArrayM[actualMonth - 2]][0].toUpperCase() + monthsArrayM[actualMonth - 2].slice(1);
     this.datesElement.textContent = `${makeUpper}/${monthsArrayM[actualMonth - 1]}`;
@@ -68,6 +67,7 @@ class Methods{
     expancesNamesArray.forEach((expancesName, index) =>{
        document.querySelector(`[data-dv="${expancesName}"]`).textContent = expancesArray[index];
        let percents = ((expancesArray[index] / daySum) * 100).toFixed();
+       percents = isNaN(percents) ? 0 : percents;
        this.graphs[index].style.width = `${percents}%`;
     });
     this.valueDayAll.textContent = daySum.toFixed(2);
@@ -76,9 +76,8 @@ class Methods{
       document.querySelector(`[data-month="${expancesName}"]`).textContent = expancesMonthArray[index];
       let percents = ((expancesMonthArray[index] / monthSum) * 100).toFixed();
       this.graphsMonth[index].style.width = `${percents}%`;
-
-      this.valueMonthAll.textContent = monthSum.toFixed(2);
    });
+   this.valueMonthAll.textContent = monthSum.toFixed(2);
     
     let left = (this.sumForDay - daySum).toFixed(1);
     let color = 'red';
